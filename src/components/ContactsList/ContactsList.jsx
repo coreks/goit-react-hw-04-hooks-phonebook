@@ -1,0 +1,23 @@
+// import PropTypes from 'prop-types';
+import ContactsItem from '../ContactsItem/ContactsItem';
+import css from '../ContactsList/ContactsList.module.css';
+
+const ContactsList = ({ contacts, onDeleteContact }) => (
+  <ul className={css.list}>
+    {contacts.map(({ id, name, number }) => (
+      <ContactsItem
+        key={id}
+        id={id}
+        name={name}
+        number={number}
+        onDeleteContact={onDeleteContact}
+      />
+    ))}
+  </ul>
+);
+
+// ContactsList.propTypes = {
+//   contacts: PropTypes.array,
+// };
+
+export default ContactsList;
