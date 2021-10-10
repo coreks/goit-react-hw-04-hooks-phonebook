@@ -11,14 +11,10 @@ function Form({ onSubmit }) {
   const nameInputId = shortid.generate();
   const numberInputId = shortid.generate();
 
-  const handleNameChange = e => {
-    const { value } = e.currentTarget;
-    setName(value);
-  };
+  const handleChange = e => {
+    const { value, name } = e.currentTarget;
 
-  const handleNumberChange = e => {
-    const { value } = e.currentTarget;
-    setNumber(value);
+    name === 'name' ? setName(value) : setNumber(value);
   };
 
   const handleSubmit = e => {
@@ -36,7 +32,7 @@ function Form({ onSubmit }) {
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>
-      <label>
+      <label htmlFor={nameInputId}>
         Name
         <input
           type="text"
@@ -45,13 +41,13 @@ function Form({ onSubmit }) {
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
           required
-          onChange={handleNameChange}
+          onChange={handleChange}
           id={nameInputId}
           className={css.input}
         />
       </label>
 
-      <label>
+      <label htmlFor={numberInputId}>
         Number
         <input
           type="tel"
@@ -60,7 +56,7 @@ function Form({ onSubmit }) {
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
           required
-          onChange={handleNumberChange}
+          onChange={handleChange}
           id={numberInputId}
           className={css.input}
         />

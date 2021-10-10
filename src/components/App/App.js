@@ -57,7 +57,7 @@ function App() {
   };
 
   return (
-    <div className={css.app}>
+    <div className={css.mainContainer}>
       <h1>Phonebook</h1>
       <Form onSubmit={addContact} />
 
